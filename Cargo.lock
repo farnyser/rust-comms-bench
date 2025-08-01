@@ -522,6 +522,7 @@ dependencies = [
 name = "rust_comms"
 version = "0.1.0"
 dependencies = [
+ "crossbeam-channel",
  "glommio",
  "num_cpus",
  "tokio",
