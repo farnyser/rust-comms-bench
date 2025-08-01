@@ -6,3 +6,4 @@ edition = "2021"
 [dependencies]
 tokio = { version = "1.47.0", features = ["sync", "rt-multi-thread", "time", "rt", "macros"] }
 glommio = { version = "0.8.0", features = [] }
+num_cpus = "1.17.0"

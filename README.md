@@ -2,7 +2,8 @@ Rust MT comms latency
 =====================
 
 ```
-Tokio Broadcast - Time elapsed: 1.075186602s, per item (avg): 1.075186ms
-Tokio MPSC - Time elapsed: 1.071513495s, per item (avg): 1.071513ms
-Glommio - Time elapsed: 5.552961ms, per item (avg): 5.552µs
+Tokio Broadcast - Time elapsed: 1.068414169s, per item (avg): 1.068414ms
+Tokio MPSC - Time elapsed: 1.069492468s, per item (avg): 1.069492ms
+Glommio - Time elapsed: 4.8743ms, per item (avg): 4.874µs
+Glommio broadcast - Time elapsed: 22.650447ms, per item (avg): 22.65µs
 ```

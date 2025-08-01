@@ -1,8 +1,11 @@
+use crate::glommio_broadcast_one_per_one::glommio_broadcast_bench;
 use crate::glommio_one_per_one::glommio_bench;
 use crate::tokio_mpsc_one_per_one::tokio_mpsc_bench;
 use crate::tokio_one_per_one::tokio_bench;
 use glommio::LocalExecutor;
 
+mod counter;
+mod glommio_broadcast_one_per_one;
 mod glommio_one_per_one;
 mod tokio_mpsc_one_per_one;
 mod tokio_one_per_one;
@@ -28,8 +31,16 @@ async fn main() {
     time_it!("Tokio MPSC", tokio_mpsc_bench(1000).await, 1000);
 
     let ex = LocalExecutor::default();
-
     ex.run(async {
         time_it!("Glommio", glommio_bench(1000).await, 1000);
+    });
+
+    let ex = LocalExecutor::default();
+    ex.run(async {
+        time_it!(
+            "Glommio broadcast",
+            glommio_broadcast_bench(1000, 1).await,
+            1000
+        );
     });
 }
