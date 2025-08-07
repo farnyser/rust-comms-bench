@@ -2,7 +2,6 @@ use crate::counter::BroadcastCounter;
 use glommio::channels::channel_mesh::{Full, MeshBuilder, Receivers};
 use glommio::timer::sleep;
 use glommio::{LocalExecutorBuilder, Placement};
-use num_cpus;
 use std::sync::Arc;
 use std::time::Duration;
 

@@ -5,6 +5,10 @@ edition = "2021"
 
 [dependencies]
 tokio = { version = "1.47.0", features = ["sync", "rt-multi-thread", "time", "rt", "macros"] }
-glommio = { version = "0.8.0", features = [] }
+glommio = { version = "0.9.0", features = [] }
 num_cpus = "1.17.0"
 crossbeam-channel = "0.5.15"
+futures = "0.3.31"
+monoio = { version = "0.2.4", features = ["sync"] }
+flume = "0.11.1"
+kanal = "0.1.1"
