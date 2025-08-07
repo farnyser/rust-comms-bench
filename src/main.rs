@@ -3,7 +3,8 @@ use crate::flume_one_per_one::flume_broadcast_bench;
 use crate::glommio_broadcast_one_per_one::glommio_broadcast_bench;
 use crate::glommio_one_per_one::glommio_bench;
 use crate::glommio_shared_channels::glommio_shared_channels_bench;
-use crate::kanal_one_per_one::kanal_broadcast_bench;
+use crate::kanal_broadcast_bench::kanal_broadcast_bench;
+use crate::kanal_one_per_one::kanal_spsc_bench;
 use crate::kanal_two_shared_channels::kanal_two_shared_channels_bench;
 use crate::tokio_mpsc_one_per_one::tokio_mpsc_bench;
 use crate::tokio_one_per_one::tokio_bench;
@@ -16,6 +17,7 @@ mod glommio_broadcast_one_per_one;
 mod glommio_one_per_one;
 mod glommio_shared_channels;
 mod glommio_two_shared_channels;
+mod kanal_broadcast_bench;
 mod kanal_one_per_one;
 mod kanal_two_shared_channels;
 mod tokio_mpsc_one_per_one;
@@ -42,8 +44,9 @@ async fn main() {
     time_it!("Tokio MPSC", tokio_mpsc_bench(1000).await, 1000);
     time_it!("Crossbeam", crossbeam_broadcast_bench(1000, 1), 1000);
     time_it!("Flume", flume_broadcast_bench(1000, 1), 1000);
-    time_it!("Kanal", kanal_broadcast_bench(1000, 1), 1000);
+    time_it!("Kanal", kanal_spsc_bench(1000, 1), 1000);
     time_it!("Kanal 2 RX", kanal_two_shared_channels_bench(1000), 1000);
+    time_it!("Kanal Broadcast", kanal_broadcast_bench(1000, 2), 1000);
 
     let ex = LocalExecutor::default();
     ex.run(async {

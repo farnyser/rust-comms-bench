@@ -20,7 +20,7 @@ fn producer_task(tx_channels: Vec<Sender<u64>>, length: u32) {
     }
 }
 
-pub(crate) fn kanal_broadcast_bench(length: u32, num_consumers: usize) {
+pub(crate) fn kanal_spsc_bench(length: u32, num_consumers: usize) {
     let mut producer_senders: Vec<Sender<u64>> = Vec::with_capacity(num_consumers);
     let mut consumer_join_handles = Vec::new();
 
